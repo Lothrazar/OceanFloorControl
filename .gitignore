@@ -16,7 +16,6 @@ screenshots/
 .settings/
 .classpath
 .project
-gradlew
 options.txt
 usernamecache.json
 crash-reports/

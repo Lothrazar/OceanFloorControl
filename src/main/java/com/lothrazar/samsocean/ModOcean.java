@@ -4,7 +4,6 @@ import org.apache.logging.log4j.Logger;
  
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -31,7 +30,6 @@ public class ModOcean
 		
 		cfg = new ConfigOcean(new Configuration(event.getSuggestedConfigurationFile()));
 	  
-		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
 		MinecraftForge.TERRAIN_GEN_BUS.register(instance);
 		MinecraftForge.ORE_GEN_BUS.register(instance); 
