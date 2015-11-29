@@ -35,7 +35,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{ 
-		if(world.provider.getDimensionId() == OVERWORLD)//overworld 
+		if(world.provider.getDimensionId() == OVERWORLD) 
 		{ 
 			this.run(this.genClay, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
 					 ModOcean.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
@@ -43,13 +43,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 					 ModOcean.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE,
 					 ModOcean.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
-		} 
-		/*//TODO: maybe oneday?
-		if(world.provider.getDimensionId() == Reference.Dimension.nether) 
-		{ 
-			this.run(this.genGold, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
-					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT); 
-		}*/
+		}
 	}
 	
 	private void run(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) 
@@ -73,7 +67,6 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	         
 	        if( biome == BiomeGenBase.ocean || 
 	        	biome == BiomeGenBase.deepOcean 
-	        	//||biome==BiomeGenBase.hell//TODO: a seperate way/class for the nether?
 	        	)
 	        {  
 	        	generator.generate(world, rand, pos);  

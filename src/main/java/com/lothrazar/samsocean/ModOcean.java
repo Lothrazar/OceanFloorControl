@@ -1,7 +1,4 @@
 package com.lothrazar.samsocean;
-
-import org.apache.logging.log4j.Logger;     
- 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -15,19 +12,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModOcean
 {	
 	public static final String MODID = "samsocean";
-	public static final String TEXTURE_LOCATION = MODID + ":";
+	int weight = 0;
 
 	@Instance(value = MODID)
 	public static ModOcean instance;	
 
-	public static Logger logger; 
 	public static ConfigOcean cfg;
 
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
-		logger = event.getModLog();  
-		
 		cfg = new ConfigOcean(new Configuration(event.getSuggestedConfigurationFile()));
 	  
 		MinecraftForge.EVENT_BUS.register(instance); 
@@ -38,7 +32,6 @@ public class ModOcean
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		int weight = 0;
 		GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
 	}
 }
