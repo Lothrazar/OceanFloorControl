@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
   
-@Mod(modid = ModOcean.MODID, useMetadata = true )  
+@Mod(modid = ModOcean.MODID, useMetadata = true ,updateJSON="https://raw.githubusercontent.com/LothrazarMinecraftMods/OceanFloorControl/master/update.json")  
 public class ModOcean
 {	
 	public static final String MODID = "samsocean";
