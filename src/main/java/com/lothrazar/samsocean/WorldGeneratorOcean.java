@@ -13,7 +13,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGeneratorOcean implements IWorldGenerator {
-  // Thanks to ref :
   // http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
   private WorldGenerator genClay;
   private WorldGenerator genSand;

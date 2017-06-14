@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @Mod(modid = ModOcean.MODID, useMetadata = true, updateJSON = "https://raw.githubusercontent.com/LothrazarMinecraftMods/OceanFloorControl/master/update.json")
 public class ModOcean {
   public static final String MODID = "samsocean";
-  int weight = 0;
   @Instance(value = MODID)
   public static ModOcean instance;
   public static ConfigOcean cfg;
@@ -24,6 +23,6 @@ public class ModOcean {
   }
   @EventHandler
   public void onInit(FMLInitializationEvent event) {
-    GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
+    GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), 0);
   }
 }
