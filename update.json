@@ -31,6 +31,6 @@
   },
   "1.12.2":{
   	"1.0.1":"Ported",
-  	"1.0.2":"Updated to latest forge."
+  	"1.0.2":"Updated to latest forge.  Added comments to config file. Added upper and lower limits to config file to avoid crashes with bad data. "
   }
 }

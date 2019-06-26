@@ -1,4 +1,5 @@
 package com.lothrazar.samsocean;
+
 import java.util.Random;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Biomes;
@@ -13,6 +14,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGeneratorOcean implements IWorldGenerator {
+
   // http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
   private WorldGenerator genClay;
   private WorldGenerator genSand;
@@ -21,11 +23,13 @@ public class WorldGeneratorOcean implements IWorldGenerator {
   private final int MAX_HEIGHT = 128;
   public static final int CHUNK_SIZE = 16;
   public static final int OVERWORLD = 0;
+
   public WorldGeneratorOcean() {
     this.genClay = new WorldGenMinable(Blocks.CLAY.getDefaultState(), ModOcean.cfg.clayNumBlocks, BlockMatcher.forBlock(Blocks.GRAVEL));
     this.genSand = new WorldGenMinable(Blocks.DIRT.getDefaultState(), ModOcean.cfg.dirtNumBlocks, BlockMatcher.forBlock(Blocks.GRAVEL));
     this.genDirt = new WorldGenMinable(Blocks.SAND.getDefaultState(), ModOcean.cfg.sandNumBlocks, BlockMatcher.forBlock(Blocks.GRAVEL));
   }
+
   @Override
   public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
     if (world.provider.getDimension() == OVERWORLD) {
@@ -34,6 +38,7 @@ public class WorldGeneratorOcean implements IWorldGenerator {
       this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, ModOcean.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
     }
   }
+
   private void run(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) {
     if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
       throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
