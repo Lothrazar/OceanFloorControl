@@ -1,36 +1,10 @@
 {
   "homepage": "http://www.curse.com/mc-mods/minecraft/231837-ocean-floor-clay-sand-and-dirt",
   "promos": {
-    "1.7.10-latest": "1.0.0",
-    "1.7.10-recommended": "1.0.0",
-    "1.8-latest": "1.0.0",
-    "1.8-recommended": "1.0.0",
-    "1.8.8-latest": "1.0.0",
-    "1.8.8-recommended": "1.0.0",
-    "1.8.9-latest": "1.0.0",
-    "1.8.9-recommended": "1.0.0",
-    "1.9-latest": "1.0.1",
-    "1.9-recommended": "1.0.1",
-    "1.9.4-latest": "1.0.1",
-    "1.9.4-recommended": "1.0.1",
-    "1.10.2-latest": "1.0.1",
-    "1.10.2-recommended": "1.0.1",
-    "1.11-latest": "1.0.1",
-    "1.11-recommended": "1.0.1",
-    "1.12.2-latest": "1.0.2",
-    "1.12.2-recommended": "1.0.2"
+    "1.16.5-latest": "1.0.1",
+    "1.16.5-recommended": "1.0.1"
   },
-  "1.9":{
-  	"1.0.1":"Added frozen ocean biome"
-  },
-  "1.10.2":{
+  "1.16.5":{
   	"1.0.1":"Ported"
-  },
-  "1.11":{
-  	"1.0.1":"Ported"
-  },
-  "1.12.2":{
-  	"1.0.1":"Ported",
-  	"1.0.2":"Updated to latest forge.  Added comments to config file. Added upper and lower limits to config file to avoid crashes with bad data. "
   }
 }

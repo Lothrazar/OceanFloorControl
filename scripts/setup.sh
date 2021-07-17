@@ -7,5 +7,3 @@
 
 # ./gradlew genEclipseRuns --refresh-dependencies
 
-echo "update your IDE debug configuration Program Arguments with:  "
-echo "--mixin mixins.myplugin.json"

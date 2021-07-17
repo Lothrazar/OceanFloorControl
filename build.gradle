@@ -20,7 +20,7 @@ import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
 version = "${mc_version}-${mod_version}"
-group= "com.lothrazar.oceanfloor"
+group = "com.lothrazar.oceanfloor"
 archivesBaseName = "OceanFloor"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
@@ -90,11 +90,6 @@ minecraft {
     }
 }
 
-// mixin {
-//       add sourceSets.main, "lothrazaroceanfloor.refmap.json"
-//
-//       disableTargetValidator = false
-// }
 
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
@@ -102,7 +97,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
  
-    compile fg.deobf("mezz.jei:${jei_version}")
+  //  compile fg.deobf("mezz.jei:${jei_version}")
  //   compile fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
  //   compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
  //   runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
