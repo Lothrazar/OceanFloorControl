@@ -1,7 +1,7 @@
 {
   "modListVersion": 2,
   "modList": [{
-    "modid": "samsocean",
+    "modid": "oceanfloor",
     "name": "Ocean Floor Classic",
     "description": "The gravel ocean floor is decorated with clay, sand, and dirt.  Controls in config file.",
     "version": "1.0.2",
