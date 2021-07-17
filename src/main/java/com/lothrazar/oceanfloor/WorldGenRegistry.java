@@ -15,14 +15,17 @@ import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 
 public class WorldGenRegistry {
 
-  private static final int SPREAD = 50;
   private static final RuleTest RULEGRAVEL = new BlockMatchRuleTest(Blocks.GRAVEL);
-  public static final ConfiguredFeature<?, ?> DIRT = buildOreFeature(RULEGRAVEL, Blocks.DIAMOND_BLOCK,
-      ConfigOcean.DIRTSIZE.get(), 1, 64, SPREAD);
-  public static final ConfiguredFeature<?, ?> CLAY = buildOreFeature(RULEGRAVEL, Blocks.GRAY_WOOL,
-      ConfigOcean.DIRTSIZE.get(), 1, 64, SPREAD);
-  public static final ConfiguredFeature<?, ?> SAND = buildOreFeature(RULEGRAVEL, Blocks.YELLOW_CONCRETE,
-      ConfigOcean.DIRTSIZE.get(), 1, 64, SPREAD);
+  private static final RuleTest RULESAND = new BlockMatchRuleTest(Blocks.SAND);
+  public static final ConfiguredFeature<?, ?> DIRT = buildOreFeature(RULEGRAVEL, Blocks.DIRT,
+      ConfigOcean.DIRTSIZE.get(), 1, 64, ConfigOcean.DIRTSPREAD.get());
+  public static final ConfiguredFeature<?, ?> CLAY = buildOreFeature(RULEGRAVEL, Blocks.CLAY,
+      ConfigOcean.CLAYSIZE.get(), 1, 64, ConfigOcean.CLAYSPREAD.get());
+  public static final ConfiguredFeature<?, ?> SAND = buildOreFeature(RULEGRAVEL, Blocks.SAND,
+      ConfigOcean.SANDSIZE.get(), 1, 64, ConfigOcean.SANDSPREAD.get());
+  //sand to clan
+  public static final ConfiguredFeature<?, ?> CLAY_ON_SAND = buildOreFeature(RULESAND, Blocks.CLAY,
+      ConfigOcean.CLAYSIZE.get(), 1, 64, ConfigOcean.CLAYSPREAD.get());
 
   public static ConfiguredFeature<?, ?> buildOreFeature(RuleTest rule, Block block, int size, int minHeight, int maxHeight, int spread) {
     return Feature.ORE.withConfiguration(new OreFeatureConfig(rule, block.getDefaultState(), size)).func_242731_b(spread).square()
@@ -31,8 +34,11 @@ public class WorldGenRegistry {
 
   public static void init() {
     Registry<ConfiguredFeature<?, ?>> r = WorldGenRegistries.CONFIGURED_FEATURE;
+    //most oceans, normal and cold, have a gravel floor
+    Registry.register(r, new ResourceLocation(ModOcean.MODID, "clay_on_sand"), CLAY_ON_SAND);
     Registry.register(r, new ResourceLocation(ModOcean.MODID, "clay"), CLAY);
     Registry.register(r, new ResourceLocation(ModOcean.MODID, "sand"), CLAY);
     Registry.register(r, new ResourceLocation(ModOcean.MODID, "dirt"), DIRT);
+    // WARM oceans can have a sand floor
   }
 }

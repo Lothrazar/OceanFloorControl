@@ -12,7 +12,12 @@ public class ConfigOcean {
   private static final ForgeConfigSpec.Builder CFG = new ForgeConfigSpec.Builder();
   private static ForgeConfigSpec COMMON_CONFIG;
   public static IntValue DIRTSIZE;
-  private static final String WALL = "####################################################################################";
+  public static IntValue DIRTSPREAD;
+  public static IntValue CLAYSPREAD;
+  public static IntValue CLAYSIZE;
+  public static IntValue SANDSIZE;
+  public static IntValue SANDSPREAD;
+  public static final String WALL = "####################################################################################";
   static {
     initConfig();
   }
@@ -30,10 +35,21 @@ public class ConfigOcean {
 
   private static void initConfig() {
     CFG.comment(WALL, "Features", WALL).push(ModOcean.MODID);
-    CFG.comment(WALL, " Enchantment related configs", WALL)
+    CFG.comment(WALL, " Dirt settings", WALL)
         .push("dirt");
-    DIRTSIZE = CFG.comment("s").defineInRange("size", 18, 1, 640);
+    DIRTSIZE = CFG.comment("Patch size").defineInRange("size", 16, 0, 64);
+    DIRTSPREAD = CFG.comment("Spread area").defineInRange("spread", 15, 1, 100);
     CFG.pop(); // dirt
+    CFG.comment(WALL, " Clay settings", WALL)
+        .push("clay");
+    CLAYSIZE = CFG.comment("Patch size").defineInRange("size", 32, 0, 64);
+    CLAYSPREAD = CFG.comment("Spread area").defineInRange("spread", 75, 1, 100);
+    CFG.pop(); // clay
+    CFG.comment(WALL, " Sand settings", WALL)
+        .push("sand");
+    SANDSIZE = CFG.comment("Patch size").defineInRange("size", 22, 0, 64);
+    SANDSPREAD = CFG.comment("Spread area").defineInRange("spread", 45, 1, 100);
+    CFG.pop(); // sand
     CFG.pop(); //ROOT
     COMMON_CONFIG = CFG.build();
   }
