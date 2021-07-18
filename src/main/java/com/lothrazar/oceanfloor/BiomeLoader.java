@@ -17,17 +17,19 @@ public class BiomeLoader {
     Decoration d = Decoration.UNDERGROUND_DECORATION; // underground ores?
     if (event.getCategory() == Biome.Category.OCEAN) {
       //go
-      if (ConfigOcean.SANDSIZE.get() > 0) {
-        r.withFeature(d, WorldGenRegistry.SAND);
-      }
       if (ConfigOcean.CLAYSIZE.get() > 0) {
         r.withFeature(d, WorldGenRegistry.CLAY);
+        r.withFeature(d, WorldGenRegistry.CLAY_ON_SAND);
+      }
+      if (ConfigOcean.SANDSIZE.get() > 0) {
+        r.withFeature(d, WorldGenRegistry.SAND);
       }
       if (ConfigOcean.DIRTSIZE.get() > 0) {
         r.withFeature(d, WorldGenRegistry.DIRT);
       }
-      if (ConfigOcean.CLAYSIZE.get() > 0) {
-        r.withFeature(d, WorldGenRegistry.CLAY_ON_SAND);
+      if (ConfigOcean.GRAVELSIZE.get() > 0) {
+        r.withFeature(d, WorldGenRegistry.CDIRT);
+        r.withFeature(d, WorldGenRegistry.GRAVEL);
       }
     }
   }

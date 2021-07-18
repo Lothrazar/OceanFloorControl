@@ -1,10 +1,10 @@
 {
-  "homepage": "http://www.curse.com/mc-mods/minecraft/231837-ocean-floor-clay-sand-and-dirt",
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/ocean-floor-clay-sand-and-dirt",
   "promos": {
-    "1.16.5-latest": "1.0.1",
-    "1.16.5-recommended": "1.0.1"
+    "1.16.5-latest": "1.0.0",
+    "1.16.5-recommended": "1.0.0"
   },
   "1.16.5":{
-  	"1.0.1":"Ported"
+  	"1.0.0":"First 1.16.5 update.  Spawns clay/sand/dirt inside ocean floors (biome type 'ocean' of different temperatures)"
   }
 }
