@@ -1,26 +1,30 @@
 package com.lothrazar.oceanfloor;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
-import net.minecraft.world.gen.feature.template.RuleTest;
-import net.minecraft.world.gen.placement.Placement;
-import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RangeDecoratorConfiguration;
+import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
+import net.minecraft.world.level.levelgen.placement.FeatureDecorator;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
 public class WorldGenRegistry {
 
-  private static final RuleTest REPLACEGRAVEL = new BlockMatchRuleTest(Blocks.GRAVEL);
-  private static final RuleTest REPLACESAND = new BlockMatchRuleTest(Blocks.SAND);
-  private static final RuleTest REPLACESTONE = new BlockMatchRuleTest(Blocks.STONE);
+  private static final RuleTest REPLACEGRAVEL = new BlockMatchTest(Blocks.GRAVEL);
+  private static final RuleTest REPLACESAND = new BlockMatchTest(Blocks.SAND);
+  private static final RuleTest REPLACESTONE = new BlockMatchTest(Blocks.STONE);
 
   private static ConfiguredFeature<?, ?> buildOreFeature(RuleTest rule, Block block, int size, int minHeight, int maxHeight, int spread) {
-    return Feature.ORE.withConfiguration(new OreFeatureConfig(rule, block.getDefaultState(), size)).func_242731_b(spread).square().withPlacement(Placement.RANGE.configure(new TopSolidRangeConfig(minHeight, 0, maxHeight))); // 
+    return Feature.ORE.configured(new OreConfiguration(rule, block.defaultBlockState(), size)).count(spread).squared().decorated(
+        FeatureDecorator.RANGE.configured(new RangeDecoratorConfiguration(
+            UniformHeight.of(VerticalAnchor.aboveBottom(minHeight), VerticalAnchor.absolute(maxHeight)))));
   }
 
   public static final ConfiguredFeature<?, ?> CLAY = buildOreFeature(REPLACEGRAVEL, Blocks.CLAY,
@@ -37,7 +41,7 @@ public class WorldGenRegistry {
       ConfigOcean.GRAVELSIZE.get(), 1, 64, ConfigOcean.GRAVELSPREAD.get());
 
   public static void init() {
-    Registry<ConfiguredFeature<?, ?>> r = WorldGenRegistries.CONFIGURED_FEATURE;
+    Registry<ConfiguredFeature<?, ?>> r = BuiltinRegistries.CONFIGURED_FEATURE;
     //warmest is clay/sand
     Registry.register(r, new ResourceLocation(ModOcean.MODID, "clay_on_sand"), CLAY_ON_SAND);
     Registry.register(r, new ResourceLocation(ModOcean.MODID, "clay_on_gravel"), CLAY);
