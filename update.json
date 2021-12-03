@@ -1,10 +1,10 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/ocean-floor-clay-sand-and-dirt",
   "promos": {
-    "1.17.1-latest": "1.0.0",
-    "1.17.1-recommended": "1.0.0"
+    "1.18-latest": "1.0.0",
+    "1.18-recommended": "1.0.0"
   },
-  "1.17.1":{
+  "1.18":{
   	"1.0.0":"Ported.  Spawns clay/sand/dirt inside ocean floors (biome type 'ocean' of different temperatures)"
   }
 }

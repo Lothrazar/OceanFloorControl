@@ -24,7 +24,7 @@ version = "${mc_version}-${mod_version}"
 group = "com.lothrazar.oceanfloor"
 archivesBaseName = "OceanFloor"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 checkstyle {
     toolVersion '8.23'
@@ -35,7 +35,7 @@ checkstyleMain {
 }
 
 minecraft {
- mappings channel: 'official', version: '1.17.1'
+ mappings channel: 'official', version: '1.18'
  
   //  accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -181,11 +181,14 @@ task signJar(type: SignJar, dependsOn: jar) {
     inputFile = jar.archivePath
     outputFile = jar.archivePath
 }
+build.dependsOn signJar
 
 task copyJar(type: Copy) {
     from jar
     into "${dist_folder}"
 }
+
+build.finalizedBy copyJar
 
 task cleanJar {
   delete 'build/libs'
