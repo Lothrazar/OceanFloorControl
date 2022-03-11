@@ -17,7 +17,6 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-
 import java.util.List;
 
 public class WorldGenRegistry {
@@ -35,11 +34,11 @@ public class WorldGenRegistry {
   }
 
   private static List<PlacementModifier> orePlacement(PlacementModifier countModifier, PlacementModifier heightPlacement) {
-  	return List.of(countModifier, InSquarePlacement.spread(), heightPlacement, BiomeFilter.biome());
+    return List.of(countModifier, InSquarePlacement.spread(), heightPlacement, BiomeFilter.biome());
   }
 
   private static List<PlacementModifier> commonOrePlacement(int spread, PlacementModifier modifier) {
-  	return orePlacement(CountPlacement.of(spread), modifier);
+    return orePlacement(CountPlacement.of(spread), modifier);
   }
 
   public static final ConfiguredFeature<?, ?> CLAY_ON_GRAVEL = buildOreFeature(REPLACEGRAVEL, Blocks.CLAY, ConfigOcean.CLAYSIZE.get());
@@ -58,19 +57,19 @@ public class WorldGenRegistry {
 
   public static void init() {
     //warmest is clay/sand
-	FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_sand").toString(), CLAY_ON_SAND);
-	FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_gravel").toString(), CLAY_ON_GRAVEL);
-	FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "sand_on_gravel").toString(), SAND_ON_GRAVEL);
-	FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "dirt_on_gravel").toString(), DIRT_ON_GRAVEL);
-	FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "coarse_dirt_on_stone").toString(), DIRT_ON_STONE);
-	FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "gravel_on_stone").toString(), GRAVEL_ON_STONE);
+    FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_sand").toString(), CLAY_ON_SAND);
+    FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_gravel").toString(), CLAY_ON_GRAVEL);
+    FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "sand_on_gravel").toString(), SAND_ON_GRAVEL);
+    FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "dirt_on_gravel").toString(), DIRT_ON_GRAVEL);
+    FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "coarse_dirt_on_stone").toString(), DIRT_ON_STONE);
+    FeatureUtils.register(new ResourceLocation(ModOcean.MODID, "gravel_on_stone").toString(), GRAVEL_ON_STONE);
     //coldest is dirt/grave/
 
-	PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_sand").toString(), CLAY_ON_SAND_PLACED_FEATURE);
-	PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_gravel").toString(), CLAY_ON_GRAVEL_PLACED_FEATURE);
-	PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "sand_on_gravel").toString(), SAND_ON_GRAVEL_PLACED_FEATURE);
-	PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "dirt_on_gravel").toString(), DIRT_ON_GRAVEL_PLACED_FEATURE);
-	PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "coarse_dirt_on_stone").toString(), DIRT_ON_STONE_PLACED_FEATURE);
-	PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "gravel_on_stone").toString(), GRAVEL_ON_STONE_PLACED_FEATURE);
+    PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_sand").toString(), CLAY_ON_SAND_PLACED_FEATURE);
+    PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "clay_on_gravel").toString(), CLAY_ON_GRAVEL_PLACED_FEATURE);
+    PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "sand_on_gravel").toString(), SAND_ON_GRAVEL_PLACED_FEATURE);
+    PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "dirt_on_gravel").toString(), DIRT_ON_GRAVEL_PLACED_FEATURE);
+    PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "coarse_dirt_on_stone").toString(), DIRT_ON_STONE_PLACED_FEATURE);
+    PlacementUtils.register(new ResourceLocation(ModOcean.MODID, "gravel_on_stone").toString(), GRAVEL_ON_STONE_PLACED_FEATURE);
   }
 }
