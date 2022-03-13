@@ -10,7 +10,6 @@ public class ModOcean {
   public static final String MODID = "oceanfloor";
 
   public ModOcean() {
-    //    IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
     ConfigOcean.setup();
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
   }
