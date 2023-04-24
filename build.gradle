@@ -1,41 +1,22 @@
-buildscript {
-    repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        maven { url = 'https://maven.minecraftforge.net/' }
-        jcenter()
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-    }
+plugins {
+    id 'eclipse'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
 }
-apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-apply plugin: 'checkstyle'
-apply from: 'https://raw.githubusercontent.com/SizableShrimp/Forge-Class-Remapper/main/classremapper.gradle'
 
 import net.minecraftforge.gradle.common.tasks.SignJar
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
 
 version = "${mc_version}-${mod_version}"
 group = "com.lothrazar.oceanfloor"
 archivesBaseName = "OceanFloor"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-checkstyle {
-    toolVersion '8.23'
-    config project.resources.text.fromUri("https://raw.githubusercontent.com/Lothrazar/Cyclic/trunk/1.16/checkstyle.xml")
-}
-checkstyleMain {
-    source ='src/main/java'
-}
+
 
 minecraft {
- mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: "${mc_version}"
  
   //  accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -90,11 +71,11 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
- //   compile fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
- //   compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
- //   runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 
+    implementation fg.deobf("blank:flib-${mc_version}:${flib_version}")
+	
+    
+	implementation fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
   //  implementation fg.deobf("curse.maven:simple-storage-network-268495:3257204")
   //  implementation fg.deobf("curse.maven:cyclic-239286:3249448")
@@ -111,25 +92,19 @@ dependencies {
 }
 
 repositories {
+  flatDir {
+      dir 'libs'
+  }
   maven {
     // location of the maven that hosts JEI files
     name = "Progwml6 maven"
     url = 'https://dvs1.progwml6.com/files/maven/'
   }
-//  maven {
-//    name = "mappings"
-//    url = 'https://dogforce-games.com/maven'
-//  }
-//  maven {
-//    // location of a maven mirror for JEI files, as a fallback
-//    name = "ModMaven"
-//    url = 'https://modmaven.k-4u.nl'
-//  }
-//  maven {
-//  	name = "curios"
-//    url = 'https://maven.theillusivec4.top/'
-//  }
-//  maven { url = 'https://maven.blamejared.com' }
+  maven {
+    // location of a maven mirror for JEI files, as a fallback
+    name = "ModMaven"
+    url = 'https://modmaven.dev'
+  }
   maven {
     url "https://cursemaven.com"
     content {
@@ -176,6 +151,10 @@ publishing {
         }
     }
 }
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
 
 task signJar(type: SignJar, dependsOn: jar) {
 
@@ -186,19 +165,13 @@ task signJar(type: SignJar, dependsOn: jar) {
     inputFile = jar.archivePath
     outputFile = jar.archivePath
 }
-build.dependsOn signJar
 
 task copyJar(type: Copy) {
     from jar
     into "${dist_folder}"
 }
 
-build.finalizedBy copyJar
 
 task cleanJar {
   delete 'build/libs'
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }

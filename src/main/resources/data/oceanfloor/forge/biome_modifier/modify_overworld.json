@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_ocean",
+  "features": ["oceanfloor:clay_on_gravel","oceanfloor:sand_on_gravel","oceanfloor:cdirt_on_gravel","oceanfloor:clay_on_dirt", "oceanfloor:clay_on_stone","oceanfloor:gravel_on_stone"],
+  "step": "underground_ores"
+}
