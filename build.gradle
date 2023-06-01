@@ -13,8 +13,6 @@ group = "com.lothrazar.oceanfloor"
 archivesBaseName = "OceanFloor"
 
 
-
-
 minecraft {
     mappings channel: 'official', version: "${mc_version}"
  
@@ -151,10 +149,10 @@ publishing {
         }
     }
 }
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-
 
 task signJar(type: SignJar, dependsOn: jar) {
 
