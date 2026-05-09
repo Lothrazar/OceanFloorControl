@@ -1,20 +1,17 @@
 package com.lothrazar.oceanfloor;
 
-import com.lothrazar.library.config.ConfigTemplate;
-import net.minecraftforge.common.ForgeConfigSpec;
 
-public class ConfigOcean extends ConfigTemplate {
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-  private static final ForgeConfigSpec.Builder CFG = new ForgeConfigSpec.Builder();
-  private static ForgeConfigSpec CONFIG;
+public class ConfigOcean  {
+
+  private static final ModConfigSpec.Builder CFG = new ModConfigSpec.Builder();
+  static ModConfigSpec CONFIG;
   public static final String WALL = "####################################################################################";
   static {
-    CFG.comment(WALL, "Configured Features moved to the data pack; see the /oceanfloor/worldgen/ folder", WALL).push(ModOcean.MODID);
+    CFG.comment(WALL, "Configured Features are in the data pack; see the /data/oceanfloor/ folder", WALL).push(ModOcean.MODID);
     CFG.pop(); //ROOT
     CONFIG = CFG.build();
   }
 
-  public ConfigOcean() {
-    CONFIG.setConfig(setup(ModOcean.MODID));
-  }
 }
